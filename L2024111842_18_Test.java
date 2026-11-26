@@ -3,6 +3,21 @@
  * 混合符号、重复元素及数组长度、整数取值边界。再用固定种子生成小数组，
  * 以逐项跳过自身的直接乘法为参照，独立检验前缀与后缀算法。
  */
+/*
+ * Review 评价：
+ * 测试类命名符合 L学号_题号_Test 规则，类开头给出了等价类划分与边界值分析的
+ * 总体原则，每个方法前也标注了测试目的与输入输出，结构清晰、可读性好。
+ * 用例覆盖完整：除题目示例外，对单零、双零、负数与重复元素、单元素、空数组
+ * 等典型等价类分别验证，并覆盖长度 1/2 以及 int 的 MIN、MAX 取值边界。
+ * 最大的亮点是 agreesWithDirectMultiplication：用固定种子 18 生成长度 1~8、
+ * 每个长度 30 组、共 240 个可复现的随机用例，并以独立的直接乘法作为参照
+ * （test oracle），属于带性质检验的随机测试，显著提升了结果可信度。
+ * 两点小建议：
+ * 1. 当前使用 JUnit 4（org.junit.Test），若项目统一为 JUnit 5 Jupiter 可考虑
+ *    迁移，不影响当前运行；
+ * 2. 随机用例元素限定在 [-3,3]，未覆盖大整数相乘的溢出情形，若题目要求考虑
+ *    int 溢出，可再补一组接近 Integer.MAX_VALUE 的用例。
+ */
 import java.util.Random;
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
